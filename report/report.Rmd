@@ -45,7 +45,7 @@ To estimate the coefficients we fit a regression model via the least squares cri
 
 
 ```{r xtable, results = 'asis',warning=FALSE, message=FALSE, echo=FALSE, comment = FALSE}
-load("/Users/MandyZhang/Desktop/stat_159/hw02/data/regression.RData")
+load("../data/regression.RData")
 library(xtable)
 # table 1:
 print(xtable(summary(reg)$coef, caption = "chart 1", type = "Latex"),comment = FALSE)
@@ -63,6 +63,6 @@ colnames(qq) <- c("Quantity","Value")
 print(xtable(qq, type = "html", caption = "chart 2"),comment = FALSE, include.rownames = FALSE)
 ```
 
-![Regression of sales onto TV](/Users/MandyZhang/Desktop/stat_159/hw02/images/scatterplot-tv-sales.pdf)
+![Regression of sales onto TV](../images/scatterplot-tv-sales.pdf)
 
 

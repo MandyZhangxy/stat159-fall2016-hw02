@@ -1,8 +1,8 @@
-setwd("~/Desktop/stat_159/hw02/data/")
-eda = read.csv("Advertising.csv", header = TRUE)
+setwd(file.path(getwd()))
+eda = read.csv("data/Advertising.csv", header = TRUE)
 eda = eda[,-1]
 
-pdf(file = "/Users/MandyZhang/Desktop/stat_159/hw02/images/scatterplot-tv-sales.pdf", height = 4.5, width = 7)
+pdf(file = "images/scatterplot-tv-sales.pdf", height = 4.5, width = 7)
 
 plot(eda$TV, eda$Sales, pch = 20, col = "deeppink3", ylab = "Sales", xlab = "TV", cex = 1.2)
 apply(cbind(eda$TV,eda$TV,eda$Sales, fitted(lm(eda$Sales~eda$TV))), 1, function(coords){
@@ -11,7 +11,7 @@ abline(lm(eda$Sales~eda$TV), col = "dark blue", lwd = 2)
 
 dev.off()
 
-png(file = "/Users/MandyZhang/Desktop/stat_159/hw02/images/scatterplot-tv-sales.png")
+png(file = "images/scatterplot-tv-sales.png")
 
 plot(eda$TV, eda$Sales, pch = 20, col = "deeppink3", ylab = "Sales", xlab = "TV", cex = 1.2)
 apply(cbind(eda$TV,eda$TV,eda$Sales, fitted(lm(eda$Sales~eda$TV))), 1, function(coords){
@@ -21,7 +21,7 @@ abline(lm(eda$Sales~eda$TV), col = "dark blue", lwd = 2)
 dev.off()
 
 reg = lm(eda$Sales~eda$TV)
-save(reg, file = "/Users/MandyZhang/Desktop/stat_159/hw02/data/regression.RData")
+save(reg, file = "data/regression.RData")
 
 
 
