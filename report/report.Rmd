@@ -1,3 +1,6 @@
+---
+output: pdf_document
+---
 
 #Abstract 
 
@@ -55,6 +58,8 @@ colnames(qq) <- c("Quantity","Value")
 print(xtable(qq, type = "html", caption = "chart 2"),comment = FALSE, include.rownames = FALSE)
 ```
 
-![Regression of sales onto TV](../images/scatterplot-tv-sales.pdf)
+[Regression of sales onto TV(https://github.com/MandyZhangxy/stat159-fall2016-hw02/blob/master/images/scatterplot-tv-sales.pdf)
 
+
+![ This plot depicts minimizing the least squares criterion in simple linear regression. Each red dot in the plot corresponds to a data point in our training set. The blue line is the predicted output line obtained from our simple linear regression model. The vertical lines between the red dots and the blue line are the errors our prediction makes. These are the very same errors that we are minimizing via least squares (specifically, the it is the squares of these errors that we are minimizing). Thus, the observed blue line in the plot is the line that best minimizies these squared errors: it is the line that fits the closest to the data points in our training set.](https://github.com/jwilber/stat159-fall2016-hw02/blob/master/images/scatterplot-tv-sales.png?raw=true "Least Squares Simple Linear Regression")
 
