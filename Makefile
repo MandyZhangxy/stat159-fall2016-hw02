@@ -2,13 +2,13 @@
 
 all: data eda-output.txt regression.RData report.pdf
 
-eda-output.txt: code/eda-script.R
-	cd code/; Rscript  code/eda-script.R
+eda-output.txt: code/eda-script.R data
+	Rscript  code/eda-script.R
 
 report.pdf: report/report.rmd data/regression.RData
 	Rscript -e "library(rmarkdown); render(report/report.rmd)" 
 
-regression.RData: code/regression-script.R
+regression.RData: code/regression-script.R data/
 	Rscript code/regression-script.R
 
 
@@ -17,5 +17,5 @@ data:
 
 
 clean:
-	rm data/Advertising.csv
+	rm -rf report/report.pdf
 
