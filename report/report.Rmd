@@ -1,12 +1,4 @@
----
-title: "Simple Regression Analysis"
-author: "Xinyu Zhang"
-date: "October 4, 2016"
-output: 
-  pdf_document:
-    fig_caption: true
-    
----
+
 #Abstract 
 
 This report is about reproducing a simple regression analysis from Section 3.1 (pages 59-71), of *Chapter3. Linear Regression*, from the book "An Introduction to Statistical Learning" [(by James et al)](http://www-bcf.usc.edu/~gareth/ISL/)
@@ -25,7 +17,7 @@ The [Advertising data set](http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv) c
 # Methodology
 We suppose that only one media from the data set, **TV**, has an association with **Sales**. Therefore, we use a simple linear model: 
 
-
+$$ Sales = \beta_0 + \beta_1 \times TV $$
 
 To estimate the coefficients we fit a regression model via the least squares criterion.
 
@@ -45,7 +37,7 @@ To estimate the coefficients we fit a regression model via the least squares cri
 
 
 ```{r xtable, results = 'asis',warning=FALSE, message=FALSE, echo=FALSE, comment = FALSE}
-load("/Users/MandyZhang/Desktop/stat_159/hw02/data/regression.RData")
+load("../data/regression.RData")
 library(xtable)
 # table 1:
 print(xtable(summary(reg)$coef, caption = "chart 1", type = "Latex"),comment = FALSE)
@@ -56,13 +48,13 @@ rse = summary(reg)$sigma
 bb = summary(reg)
 # R-square
 r2 = bb$r.squared
-c = c("Residual standard error","R", "F-statistic")
+c = c("Residual standard error","R2", "F-statistic")
 v = c(rse,r2,f[1])
 qq = data.frame(c,v)
 colnames(qq) <- c("Quantity","Value")
 print(xtable(qq, type = "html", caption = "chart 2"),comment = FALSE, include.rownames = FALSE)
 ```
 
-![Regression of sales onto TV](/Users/MandyZhang/Desktop/stat_159/hw02/images/scatterplot-tv-sales.pdf)
+![Regression of sales onto TV](../images/scatterplot-tv-sales.pdf)
 
 
