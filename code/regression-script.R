@@ -2,25 +2,26 @@ setwd("~/Desktop/stat_159/hw02/data/")
 eda = read.csv("Advertising.csv", header = TRUE)
 eda = eda[,-1]
 
-pdf(file = "/Users/MandyZhang/Desktop/stat_159/hw02/images/scatterplot-tv-sales.pdf")
-plot(eda$TV, eda$Sales, pch = 20, col = "dark red", ylab = "Sales", xlab = "TV")
-abline(lm(eda$Sales~eda$TV), col = "dark blue", cex = 100)
+pdf(file = "/Users/MandyZhang/Desktop/stat_159/hw02/images/scatterplot-tv-sales.pdf", height = 4.5, width = 7)
+
+plot(eda$TV, eda$Sales, pch = 20, col = "deeppink3", ylab = "Sales", xlab = "TV", cex = 1.2)
+apply(cbind(eda$TV,eda$TV,eda$Sales, fitted(lm(eda$Sales~eda$TV))), 1, function(coords){
+  lines(coords[1:2], coords[3:4], col = "darkgrey")})
+abline(lm(eda$Sales~eda$TV), col = "dark blue", lwd = 2)
+
 dev.off()
 
 png(file = "/Users/MandyZhang/Desktop/stat_159/hw02/images/scatterplot-tv-sales.png")
-plot(eda$TV, eda$Sales, pch = 20, col = "dark red", ylab = "Sales", xlab = "TV")
-abline(lm(eda$Sales~eda$TV), col = "dark blue", cex = 100)
+
+plot(eda$TV, eda$Sales, pch = 20, col = "deeppink3", ylab = "Sales", xlab = "TV", cex = 1.2)
+apply(cbind(eda$TV,eda$TV,eda$Sales, fitted(lm(eda$Sales~eda$TV))), 1, function(coords){
+  lines(coords[1:2], coords[3:4], col = "darkgrey")})
+abline(lm(eda$Sales~eda$TV), col = "dark blue", lwd = 2)
+
 dev.off()
 
-summary(lm(eda$Sales~eda$TV))
-aa = lm(eda$Sales~eda$TV)
-
-library(knitr)
-kable(summary(aa)$coef, digits=c(4,4,2,4), caption = "JWIEOT")
-xtable(summary(aa)$coef, digits = c(4,4,2,4), caption = "chart 1")
-
-
-
+reg = lm(eda$Sales~eda$TV)
+save(reg, file = "/Users/MandyZhang/Desktop/stat_159/hw02/data/regression.RData")
 
 
 

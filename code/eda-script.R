@@ -20,4 +20,9 @@ pdf(file = "/Users/MandyZhang/Desktop/stat_159/hw02/images/histogram-sales.pdf")
 hist(eda$Sales, main = "Histogram of Sales")
 dev.off()
 
-
+sink(file = "/Users/MandyZhang/Desktop/stat_159/hw02/data/eda-output.txt")
+cat("TV summary statistics\n\n")
+summary(eda$TV)
+cat("Sales summary statistics\n\n")
+summary(eda$Sales)
+sink()

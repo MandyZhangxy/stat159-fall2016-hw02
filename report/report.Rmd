@@ -1,0 +1,68 @@
+---
+title: "Simple Regression Analysis"
+author: "Xinyu Zhang"
+date: "October 4, 2016"
+output: 
+  pdf_document:
+    fig_caption: true
+    
+---
+#Abstract 
+
+This report is about reproducing a simple regression analysis from Section 3.1 (pages 59-71), of *Chapter3. Linear Regression*, from the book "An Introduction to Statistical Learning" [(by James et al)](http://www-bcf.usc.edu/~gareth/ISL/)
+
+
+# Introduction
+
+The goal is to provide advice on how to improve sales of the particular product. The idea is to determine whether there is relationship between advertising expenditure and sales, and if so, we would like to know the strengh of this relationship and then we can instruct our client to adjust advertising budgets, thereby indirectly increasing sales.In other word, our goal is to develop an accurate model that can be used to prodect sales on the basis of the three media (TV, radio, newspaper) budgets.
+
+
+# Data
+
+The [Advertising data set](http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv) consists of Sales (in thousands of units) of a particular product in 200 different markets (n = 200), along with advertising budgets (in thousands of dollars) for the product in each of those markets for three different media: TV, Radio, and Newspaper.
+
+
+# Methodology
+We suppose that only one media from the data set, **TV**, has an association with **Sales**. Therefore, we use a simple linear model: 
+
+
+
+To estimate the coefficients we fit a regression model via the least squares criterion.
+
+
+
+
+# Results
+
+
+
+# Conclusions
+
+
+
+
+
+
+
+```{r xtable, results = 'asis',warning=FALSE, message=FALSE, echo=FALSE, comment = FALSE}
+load("/Users/MandyZhang/Desktop/stat_159/hw02/data/regression.RData")
+library(xtable)
+# table 1:
+print(xtable(summary(reg)$coef, caption = "chart 1", type = "Latex"),comment = FALSE)
+
+#table 2: 
+f = summary(reg)$fstatistic
+rse = summary(reg)$sigma
+bb = summary(reg)
+# R-square
+r2 = bb$r.squared
+c = c("Residual standard error","R", "F-statistic")
+v = c(rse,r2,f[1])
+qq = data.frame(c,v)
+colnames(qq) <- c("Quantity","Value")
+print(xtable(qq, type = "html", caption = "chart 2"),comment = FALSE, include.rownames = FALSE)
+```
+
+![Regression of sales onto TV](/Users/MandyZhang/Desktop/stat_159/hw02/images/scatterplot-tv-sales.pdf)
+
+
