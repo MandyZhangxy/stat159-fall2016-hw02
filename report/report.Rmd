@@ -12,7 +12,7 @@ This report is about reproducing a simple regression analysis from Section 3.1 (
 
 # Introduction
 
-The goal is to provide advice on how to improve sales of the particular product. The idea is to determine whether there is relationship between advertising expenditure and sales, and if so, we would like to know the strengh of this relationship and then we can instruct our client to adjust advertising budgets, thereby indirectly increasing sales.In other word, our goal is to develop an accurate model that can be used to prodect sales on the basis of the three media (TV, radio, newspaper) budgets.
+The goal is to provide advice on how to improve sales of the particular product. The idea is to determine whether there is relationship between advertising expenditure and sales, and if so, we would like to know the strengh of this relationship and then we can instruct our client to adjust advertising budgets, thereby indirectly increasing sales.In other word, our goal is to develop an accurate model that can be used to prodict sales on the basis of the three media (TV, radio, newspaper) budgets.
 
 
 # Data
@@ -74,13 +74,7 @@ An $R^2$ statistic that is close to 1 indicates taht a large proportion of the v
 
 # Results
 
-{r fig.cap="Some text here", echo = FALSE}
-library(png)
-library(grid)
-img <- readPNG("../images/scatterplot-tv-sales.png")
-grid.raster(img)
-
-![](../images/scatterplot-tv-sales.png)
+![scatter plot with fitted regression line](../images/scatterplot-tv-sales.png)
 
 This figure is the plot of Least Squares Simple Linear Regression.
 
@@ -92,6 +86,8 @@ library(xtable)
 # table 1:
 print(xtable(summary(reg)$coef, caption = "Information about Regression Coefficients", type = "Latex"),comment = FALSE)
 ```
+
+
 
 Table 1 displays the simple linear regression fit to the `Advertising` data, where $\hat{\beta_0} = 7.03$ and $\hat{\beta_1} = 0.05$. In other words, according to this approximation, an additional $1,000 spent on TV advertising is associated with selling approximately 50 additional units of the product. 
 
@@ -115,9 +111,8 @@ print(xtable(qq, type = "html", caption = "Regression Quality Indices"),comment 
 
 In Table 2, the RSE is 3.26, which means that actual sales in each market deviate from the true regression line by approximately 3.260 units, on average. If the model were correct and the true values of the unknown coefficients $\hat{\beta_0}$ and $\hat{\beta_1}$ were known exactly, any prediction of sales on the basis of *TV* advertising would still be off by about 3,260 units on average. The $R^2$ is 0.61, and so just under two-thirds of the variability in *sales* is explained by a linear regression on *TV*. In F-statistics, the null hypothesis is that the coefficient $\beta_1$ is almost equals to 0 which means *TV* has no linear relationship with *Sales*. The bigger the value of F, the stronger to rejects the null. Therefore, in Table 2, $F = 312.14$ is relatively very large. Therefore, it gives the information that $\beta_1$ is statistically significant.  
 
-
-
 # Conclusions
-For the caption of plot, I put it in subtitle when I was plotting it. This is because somehow my computer can't generate caption using `![This is caption](../images/scatterplot-tv-sales.png)`. I went to professor Sanchez's office hour, and he couldn't figure it out either. So he asked me to write this notes in Conclusions section to let you know. 
+
+In the advertising data set, the mean value of *Sales* over all markets is approximately 14,000 units, and so the percentage error is 3260/14000 = 23%. In addition, the measurement of $R^2$ is 0.61. In other words, there is 61% of the variability of *Sales* is explained by a linear regression on TV. Therefore we find that the simple linear regression model is not a perfect accurate model to prodict sales on the basis of TV budgets.Perhaps a better complicated model such as multiple Linear Regression could be more predictive and accurate.  
 
 

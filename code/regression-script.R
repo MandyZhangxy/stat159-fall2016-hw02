@@ -17,9 +17,7 @@ plot(eda$TV, eda$Sales, pch = 20, col = "deeppink3", ylab = "Sales", xlab = "TV"
 apply(cbind(eda$TV,eda$TV,eda$Sales, fitted(lm(eda$Sales~eda$TV))), 1, function(coords){
   lines(coords[1:2], coords[3:4], col = "darkgrey")})
 abline(lm(eda$Sales~eda$TV), col = "dark blue", lwd = 2)
-title("Simple Linear Regression", sub = "Figure 1: scatter plot with fitted regression line",
-      cex.main = 2,   font.main= 4,
-      cex.sub = 1, font.sub = 3)
+title("Simple Linear Regression")
 
 dev.off()
 
